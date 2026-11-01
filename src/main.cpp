@@ -18,6 +18,7 @@
 // after 20 s instead of blocking.
 
 #include "main.hpp"
+#include "Haptics.hpp"
 
 #include "logging.hpp"
 #include "scotland2/shared/modloader.h"
@@ -61,4 +62,5 @@ MOD_EXTERN_FUNC void setup(CModInfo* info) noexcept {
 MOD_EXTERN_FUNC void late_load() noexcept {
     i2c::functions::initialize();
     INSTALL_HOOK(Logger, PlatformUser_InternalGetAccessTokenAsync_MoveNext);
+    BSFixes::InstallHapticsFix();
 }
